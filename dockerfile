@@ -44,7 +44,8 @@ RUN echo '@edge https://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/reposit
         perl-net-http@edge \
         perl-net-libidn@edge \
         perl-net-ssleay@edge \
-        perl-uri@edge
+        perl-uri@edge \
+        xmltv@edge
 
 VOLUME /data
 ADD zap2xml.pl entry.sh /

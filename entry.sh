@@ -5,7 +5,7 @@ download() {
     while true; do
         RUN_TIME="$(date '+%s')"
         # shellcheck disable=SC2086
-        /zap2xml.pl -u "$1" -p "$2" -U -o "$3" $OPT_ARGS
+        /zap2xml.pl -u "$1" -p "$2" -U -o "$3" -c "$(echo "$1" | tr -d '-_@.+')" $OPT_ARGS
         printf 'Run time: '
         date -d "@$RUN_TIME" '+%F %T %Z'
         if [ -f "$3" ]; then
@@ -28,7 +28,21 @@ download() {
 }
 
 while true; do
-    download "$USERNAME" "$PASSWORD" "/data/$XMLTV_FILENAME"
+    if [ -z "$USERNAME2" ] || [ "$USERNAME2" = 'none' ]; then
+        download "$USERNAME" "$PASSWORD" "/data/$XMLTV_FILENAME"
+    else
+        mkdir -p /tmp/xmltv/raws
+        mkdir -p /tmp/xmltv/sorted
+        download "$USERNAME" "$PASSWORD" "/tmp/xmltv/raws/1.xml"
+        download "$USERNAME2" "$PASSWORD2" "/tmp/xmltv/raws/2.xml"
+        echo 'Sorting both files.'
+        tv_sort /tmp/xmltv/raws/1.xml --by-channel --output /tmp/xmltv/sorted/1.xml
+        tv_sort /tmp/xmltv/raws/2.xml --by-channel --output /tmp/xmltv/sorted/2.xml
+        echo 'Merging both files.'
+        tv_merge -i /tmp/xmltv/sorted/1.xml -m /tmp/xmltv/sorted/2.xml -o "/data/$XMLTV_FILENAME"
+        rm -rf /tmp/xmltv
+        echo 'Done.'
+    fi
     echo "Will run again in $SLEEPTIME seconds."
     sleep "$SLEEPTIME"
 done
