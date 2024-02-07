@@ -442,7 +442,7 @@ sub sortChan {
   if (defined($stations{$a}{order}) && defined($stations{$b}{order})) {
     my $c = $stations{$a}{order} <=> $stations{$b}{order};
     if ($c == 0) { return $stations{$a}{stnNum} <=> $stations{$b}{stnNum} }
-	else { return $c };
+  else { return $c };
   } else {
     return $stations{$a}{name} cmp $stations{$b}{name};
   }
@@ -1290,14 +1290,14 @@ sub parseJSON {
 
     if (defined($s->{'channelId'})) {
       if (!$allChan && scalar(keys %zapFavorites)) {
-	if ($zapFavorites{$s->{channelId}}) {
+        if ($zapFavorites{$s->{channelId}}) {
           if ($options{8}) {
             next if $zapStarred{$s->{channelId}};
-	    $zapStarred{$s->{channelId}} = 1;
+            $zapStarred{$s->{channelId}} = 1;
           }
-	} else {
+        } else {
           next;
-	}
+        }
       }
       # id (uniq) vs channelId, but id not nec consistent in cache
       $cs = $s->{channelNo} . "." . $s->{channelId};
@@ -1442,7 +1442,7 @@ sub postJSONO {
         $i = $gh{$max} + 1;
       }
       foreach my $sg (split(/\|/, lc($t->{seriesGenres}))) {
-	if (!${$programs{$cp}{genres}}{$sg}) {
+        if (!${$programs{$cp}{genres}}{$sg}) {
           ${$programs{$cp}{genres}}{$sg} = $i++;
         }
       }
@@ -1492,9 +1492,9 @@ sub postJSONO {
       } else {
         foreach my $ue (@{$t->{upcomingEpisodeTab}}) {
           if (lc($ue->{tmsID}) eq lc($cp)
-		&& $ue->{originalAirDate} ne ''
-		&& $ue->{originalAirDate} ne '1000-01-01T00:00Z'
-	    ) {
+            && $ue->{originalAirDate} ne ''
+            && $ue->{originalAirDate} ne '1000-01-01T00:00Z'
+          ) {
               $oad = str2time2($ue->{originalAirDate}) ;
               $oad *= 1000;
               $programs{$cp}{originalAirDate} = $oad;
