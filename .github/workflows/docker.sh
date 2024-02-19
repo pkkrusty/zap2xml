@@ -29,10 +29,6 @@ function push {
 }
 
 if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
-    # GitHub Container Registry
-    echo '##### GitHub Container Registry #####'
-    ee 'echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_REPOSITORY_OWNER" --password-stdin'
-    push 'ghcr.io'
     # Docker Hub
     echo '##### Docker Hub #####'
     ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
