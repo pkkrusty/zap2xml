@@ -13,6 +13,7 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 
 ### Index
 1. [Development](#development)
+    1. [Lint](#lint)
 1. [See Also](#see-also)
 
 ## Development
@@ -20,6 +21,15 @@ Contributors need these tools installed.
 - [act](https://github.com/nektos/act)
 - [docker](https://docs.docker.com/engine/install)
 - [git](https://git-scm.com)
+
+### Lint
+This project uses [bashate](https://github.com/openstack/bashate) _and_ [shellcheck](https://github.com/koalaman/shellcheck) to lint BASH scripts.
+```bash
+.github/workflows/lint.sh
+```
+This script contains the specific configuration for each permutation of linter and target file.
+
+The `dockerfile` is not yet linted.
 
 ## See Also
 This list is not exhaustive, there may be other compatible consumers and providers.
