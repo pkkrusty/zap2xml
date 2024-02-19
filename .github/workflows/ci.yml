@@ -1,0 +1,41 @@
+name: zap2xml CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  documentation:
+    name: Attach Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: 'false'
+
+      - name: Attach Documentation
+        run: cat .github/workflows/README.md >> $GITHUB_STEP_SUMMARY
+
+  build:
+    name: Build and Push zap2xml
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: .github/workflows/deps.sh
+
+      - name: Lint
+        run: .github/workflows/lint.sh
+
+      - name: Docker Build
+        run: ee docker build -t "$GITHUB_REPOSITORY" --progress plain .
+
+      - name: Docker Tag and Push
+        run: .github/workflows/docker.sh
+        env:
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

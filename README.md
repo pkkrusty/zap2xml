@@ -14,6 +14,7 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 ### Index
 1. [Development](#development)
     1. [Lint](#lint)
+    1. [CI](#ci)
 1. [See Also](#see-also)
 
 ## Development
@@ -30,6 +31,23 @@ This project uses [bashate](https://github.com/openstack/bashate) _and_ [shellch
 This script contains the specific configuration for each permutation of linter and target file.
 
 The `dockerfile` is not yet linted.
+
+### CI
+This repo uses GitHub Actions for CI.
+1. **zap2xml CI** - build and push the `zap2xml` project.
+    - [Pipeline](https://github.com/kj4ezj/zap2xml/actions/workflows/ci.yml)
+    - [Documentation](./.github/workflows/README.md)
+
+The CI must pass before a pull request will be peer-reviewed.
+
+You can run the GitHub Actions workflow(s) locally using [act](https://github.com/nektos/act).
+```bash
+act --artifact-server-path .github/artifacts
+```
+This skips the `docker tag` and `docker push` steps because those should never be run locally.
+
+> [!IMPORTANT]
+> Please make sure any pipeline changes do not break `act` compatibility.
 
 ## See Also
 This list is not exhaustive, there may be other compatible consumers and providers.
