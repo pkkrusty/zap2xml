@@ -12,7 +12,14 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 > > If you are browsing forks of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) wondering which fork you should use and contribute to, if any, please consider this one.
 
 ### Index
+1. [Development](#development)
 1. [See Also](#see-also)
+
+## Development
+Contributors need these tools installed.
+- [act](https://github.com/nektos/act)
+- [docker](https://docs.docker.com/engine/install)
+- [git](https://git-scm.com)
 
 ## See Also
 This list is not exhaustive, there may be other compatible consumers and providers.
