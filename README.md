@@ -37,6 +37,11 @@ docker run -v "$(pwd):/data" -e "USERNAME=$ZAP2IT_USERNAME" -e "PASSWORD=$ZAP2IT
 ```bash
 docker run -d -v "$(pwd):/data" -e "USERNAME=$ZAP2IT_USERNAME" -e "PASSWORD=$ZAP2IT_PASSWORD" -e XMLTV_FILENAME=tv-guide.xml kj4ezj/zap2xml
 ```
+The wrapper loops forever, so you will need to manually kill the container. This command kills the last container you started.
+```bash
+docker kill "$(docker ps | tail -1 | awk '{print $1}')"
+```
+For this reason and others, the wrapper will be removed in a subsequent version. If you plan to rely upon it, please pull your container by `git` tag.
 
 ## Development
 Contributors need these tools installed.
