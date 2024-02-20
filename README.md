@@ -49,6 +49,8 @@ Contributors need these tools installed.
 - [docker](https://docs.docker.com/engine/install)
 - [git](https://git-scm.com)
 
+Please [sign your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
+
 ### Lint
 This project uses [bashate](https://github.com/openstack/bashate) _and_ [shellcheck](https://github.com/koalaman/shellcheck) to lint BASH scripts.
 ```bash
