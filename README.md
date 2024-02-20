@@ -12,10 +12,31 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 > > If you are browsing forks of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) wondering which fork you should use and contribute to, if any, please consider this one.
 
 ### Index
+1. [Usage](#usage)
 1. [Development](#development)
     1. [Lint](#lint)
     1. [CI](#ci)
 1. [See Also](#see-also)
+
+## Usage
+You will need the [docker engine](https://docs.docker.com/engine/install) installed to use this project.
+
+Pull (download) this container.
+```bash
+docker pull kj4ezj/zap2xml
+```
+Download guide data to a file called `tv-guide.xml` in the current folder.
+```bash
+docker run -v "$(pwd):/data" kj4ezj/zap2xml /bin/sh -c "/zap2xml.pl -u '$ZAP2IT_USERNAME' -p '$ZAP2IT_PASSWORD' -U -o /data/tv-guide.xml"
+```
+The upstream repo provided a script that wraps `zap2xml` and runs it every 12 hours. You can run it in the foreground...
+```bash
+docker run -v "$(pwd):/data" -e "USERNAME=$ZAP2IT_USERNAME" -e "PASSWORD=$ZAP2IT_PASSWORD" -e XMLTV_FILENAME=tv-guide.xml kj4ezj/zap2xml
+```
+...or the background.
+```bash
+docker run -d -v "$(pwd):/data" -e "USERNAME=$ZAP2IT_USERNAME" -e "PASSWORD=$ZAP2IT_PASSWORD" -e XMLTV_FILENAME=tv-guide.xml kj4ezj/zap2xml
+```
 
 ## Development
 Contributors need these tools installed.
