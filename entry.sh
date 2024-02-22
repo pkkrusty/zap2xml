@@ -1,8 +1,4 @@
 #!/bin/sh
-
-# start cron
-#/usr/sbin/crond -f -l 8
-
 while true; do
     DATE="$(date)"
     # shellcheck disable=SC2086
