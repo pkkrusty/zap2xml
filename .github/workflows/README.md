@@ -29,7 +29,7 @@ This workflow performs the following steps on GitHub runners:
 1. Lint and Test jellyfin-tv-guide
     1. Checkout this repo.
     1. Install system dependencies using `.github/workflows/deps.sh`.
-    1. Lint the CI code with `shellcheck` and `bashate` using `.github/workflows/lint.sh`, and check the whitespace in `zap2xml.pl`.
+    1. Lint the BASH code with `shellcheck` and `bashate` using `.github/workflows/lint.sh`, and check the whitespace in `zap2xml.pl`.
     1. Build docker container.
     1. Tag and push the container to Docker Hub and the GitHub Container Registry using `.github/workflows/docker.sh`.
 
