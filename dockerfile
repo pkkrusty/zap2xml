@@ -16,6 +16,4 @@ RUN apk add --no-cache perl-lwp-protocol-https@edge perl-uri@edge ca-certificate
 VOLUME /data
 ADD zap2xml.pl /zap2xml.pl
 ADD entry.sh /entry.sh
-RUN chmod 755 /entry.sh /zap2xml.pl
-
 CMD ["/entry.sh"]
