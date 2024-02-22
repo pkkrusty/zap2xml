@@ -1,13 +1,12 @@
 version: '3'
 
 services:
-  sports:
-    image: shuaiscott/zap2xml:latest
+  zap2xml:
+    image: kj4ezj/zap2xml:latest
     restart: always
     volumes:
         - /xmltvdata:/data
     environment:
-        - USERNAME=myemail@email.com
-        - PASSWORD=**password**
-        - OPT_ARGS=-I -D
-        - XMLTV_FILENAME=sports.xml
+        - USERNAME=someone@example.com
+        - PASSWORD=hunter2
+        - XMLTV_FILENAME=tv-guide.xml
