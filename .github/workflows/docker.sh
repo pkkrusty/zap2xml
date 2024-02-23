@@ -9,7 +9,7 @@ GIT_TAG="$(git describe --tags --exact-match 2>/dev/null || :)"
 
 ee 'printf "$GITHUB_TOKEN" | wc -c'
 
-function push {
+function push_to {
     echo "Push to $1."
     ee docker tag "$GITHUB_REPOSITORY" "$1/$GITHUB_REPOSITORY:$GIT_COMMIT"
     ee docker push "$1/$GITHUB_REPOSITORY:$GIT_COMMIT"
@@ -31,7 +31,7 @@ if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
     # Docker Hub
     echo '##### Docker Hub #####'
     ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
-    push 'docker.io'
+    push_to 'docker.io'
 else
     printf '\e[1;96mNOTICE: Skipping "docker push" because this is not a cloud CI environment.\e[0m\n'
 fi
