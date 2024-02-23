@@ -8,7 +8,6 @@ GIT_COMMIT="$(git rev-parse HEAD)"
 GIT_TAG="$(git describe --tags --exact-match 2>/dev/null || :)"
 
 ee 'printf "$GITHUB_TOKEN" | wc -c'
-export GITHUB_TOKEN='ghp_1234567890'
 
 function push {
     echo "Push to $1."
