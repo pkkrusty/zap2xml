@@ -31,10 +31,10 @@ jobs:
         run: .github/workflows/lint.sh
 
       - name: Docker Build
-        run: ee docker build -t "$GITHUB_REPOSITORY" --progress plain .
+        run: .github/workflows/docker.sh
 
       - name: Docker Tag and Push
-        run: .github/workflows/docker.sh
+        run: .github/workflows/docker.sh push
         env:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}

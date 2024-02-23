@@ -7,6 +7,10 @@ GIT_BRANCH="$(git branch --show-current)"
 GIT_COMMIT="$(git rev-parse HEAD)"
 GIT_TAG="$(git describe --tags --exact-match 2>/dev/null || :)"
 
+function build {
+    ee docker build -t "$GITHUB_REPOSITORY" --progress plain .
+}
+
 function push {
     ee 'printf "$GITHUB_TOKEN" | wc -c'
     if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
@@ -37,6 +41,10 @@ function push_to {
     fi
 }
 
-push
+if [[ "$1" == 'push' ]]; then
+    push
+else
+    build
+fi
 
 echo "Done. - ${0##*/}"
