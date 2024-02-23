@@ -7,7 +7,17 @@ GIT_BRANCH="$(git branch --show-current)"
 GIT_COMMIT="$(git rev-parse HEAD)"
 GIT_TAG="$(git describe --tags --exact-match 2>/dev/null || :)"
 
-ee 'printf "$GITHUB_TOKEN" | wc -c'
+function push {
+    ee 'printf "$GITHUB_TOKEN" | wc -c'
+    if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
+        # Docker Hub
+        echo '##### Docker Hub #####'
+        ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
+        push_to 'docker.io'
+    else
+        printf '\e[1;96mNOTICE: Skipping "docker push" because this is not a cloud CI environment.\e[0m\n'
+    fi
+}
 
 function push_to {
     echo "Push to $1."
@@ -27,13 +37,6 @@ function push_to {
     fi
 }
 
-if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
-    # Docker Hub
-    echo '##### Docker Hub #####'
-    ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
-    push_to 'docker.io'
-else
-    printf '\e[1;96mNOTICE: Skipping "docker push" because this is not a cloud CI environment.\e[0m\n'
-fi
+push
 
 echo "Done. - ${0##*/}"
