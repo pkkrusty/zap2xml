@@ -2,6 +2,7 @@ FROM alpine:3
 ARG DIGEST
 ARG GIT_COMMIT
 ARG URL
+ARG VENDOR
 
 LABEL org.opencontainers.image.base.digest="${DIGEST:-unknown}"
 LABEL org.opencontainers.image.base.name="docker.io/library/alpine:3"
@@ -12,6 +13,7 @@ LABEL org.opencontainers.image.revision="${GIT_COMMIT:-unknown}"
 LABEL org.opencontainers.image.source="${URL:-unknown}"
 LABEL org.opencontainers.image.title="zap2xml"
 LABEL org.opencontainers.image.url="${URL:-unknown}"
+LABEL org.opencontainers.image.vendor="${VENDOR:-unknown}"
 
 ENV USERNAME=none
 ENV PASSWORD=none
