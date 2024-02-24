@@ -31,6 +31,10 @@ function push {
         echo '##### Docker Hub #####'
         ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
         push_to 'docker.io'
+        # GitHub Container Registry
+        echo '##### GitHub Container Registry #####'
+        ee 'echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_REPOSITORY_OWNER" --password-stdin'
+        push_to 'ghcr.io'
     else
         printf '\e[1;96mNOTICE: Skipping "docker push" because this is not a cloud CI environment.\e[0m\n'
     fi
