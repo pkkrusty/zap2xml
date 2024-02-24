@@ -1,15 +1,17 @@
 FROM alpine:3
 ARG DIGEST
 ARG GIT_COMMIT
+ARG URL
 
 LABEL org.opencontainers.image.base.digest="${DIGEST:-unknown}"
 LABEL org.opencontainers.image.base.name="docker.io/library/alpine:3"
 LABEL org.opencontainers.image.description="Contains the zap2xml Perl script, a command-line utility that extracts electronic program guide (EPG) data for over-the-air (OTA) or cable television from any one of several service providers, parses it, collates it, and saves it in a format compatible with various media center applications."
+LABEL org.opencontainers.image.documentation="${URL:-unknown}"
 LABEL org.opencontainers.image.licenses="GPL-3.0-or-later"
 LABEL org.opencontainers.image.revision="${GIT_COMMIT:-unknown}"
-LABEL org.opencontainers.image.source="https://github.com/kj4ezj/zap2xml"
+LABEL org.opencontainers.image.source="${URL:-unknown}"
 LABEL org.opencontainers.image.title="zap2xml"
-LABEL org.opencontainers.image.url="https://github.com/kj4ezj/zap2xml"
+LABEL org.opencontainers.image.url="${URL:-unknown}"
 
 ENV USERNAME=none
 ENV PASSWORD=none
