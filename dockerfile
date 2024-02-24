@@ -4,6 +4,7 @@ ARG GIT_COMMIT
 ARG TIMESTAMP
 ARG URL
 ARG VENDOR
+ARG VERSION
 
 LABEL org.opencontainers.image.created="${TIMESTAMP:-unknown}"
 LABEL org.opencontainers.image.base.digest="${DIGEST:-unknown}"
@@ -16,6 +17,7 @@ LABEL org.opencontainers.image.source="${URL:-unknown}"
 LABEL org.opencontainers.image.title="zap2xml"
 LABEL org.opencontainers.image.url="${URL:-unknown}"
 LABEL org.opencontainers.image.vendor="${VENDOR:-unknown}"
+LABEL org.opencontainers.image.version="${VERSION:-unknown}"
 
 ENV USERNAME=none
 ENV PASSWORD=none
