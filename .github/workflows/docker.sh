@@ -20,7 +20,7 @@ function build {
         --build-arg '"VENDOR=$GITHUB_REPOSITORY_OWNER"' \
         --build-arg '"VERSION=${GIT_TAG:-$GIT_BRANCH}"' \
         --progress plain .
-    ee docker inspect --format='{{json .Config.Labels}}' "$GITHUB_REPOSITORY"
+    ee docker inspect "--format='{{json .Config.Labels}}'" "$GITHUB_REPOSITORY"
 }
 
 function push {
