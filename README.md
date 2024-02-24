@@ -21,9 +21,13 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 ## Usage
 You will need the [docker engine](https://docs.docker.com/engine/install) installed to use this project.
 
-Pull (download) this container.
+Pull (download) this container from the [GitHub container registry](https://github.com/kj4ezj/zap2xml/pkgs/container/zap2xml).
 ```bash
-docker pull kj4ezj/zap2xml
+docker pull ghcr.io/kj4ezj/zap2xml
+```
+This container is also available on [Docker Hub](https://hub.docker.com/r/kj4ezj/zap2xml).
+```bash
+docker pull docker.io/kj4ezj/zap2xml
 ```
 Download guide data to a file called `tv-guide.xml` in the current folder.
 ```bash
@@ -88,11 +92,14 @@ This list is not exhaustive, there may be other compatible consumers and provide
 - Providers
     - [tvguide.com](https://www.tvguide.com/listings)
     - [zap2it.com](https://tvlistings.zap2it.com)
-- [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) - upstream repo.
 - XMLTV Project
     - [GitHub](https://github.com/XMLTV/xmltv)
     - [Homepage](https://wiki.xmltv.org/index.php/Main_Page)
     - [XMLTV Format](https://wiki.xmltv.org/index.php/XMLTVFormat) - documentation on the XMLTV file format.
+- zap2xml
+    - [Docker Hub](https://hub.docker.com/r/kj4ezj/zap2xml)
+    - [GitHub Container Registry](https://github.com/kj4ezj/zap2xml/pkgs/container/zap2xml)
+    - [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) - upstream repo.
 
 ***
 > **_Legal Notice_**  
