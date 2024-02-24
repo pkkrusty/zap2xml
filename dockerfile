@@ -1,4 +1,5 @@
 FROM alpine:3
+ARG BUILD_URL
 ARG DIGEST
 ARG GIT_COMMIT
 ARG TIMESTAMP
@@ -6,6 +7,7 @@ ARG URL
 ARG VENDOR
 ARG VERSION
 
+LABEL com.github.actions.url="${BUILD_URL:-unknown}"
 LABEL org.opencontainers.image.created="${TIMESTAMP:-unknown}"
 LABEL org.opencontainers.image.base.digest="${DIGEST:-unknown}"
 LABEL org.opencontainers.image.base.name="docker.io/library/alpine:3"

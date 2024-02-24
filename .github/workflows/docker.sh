@@ -13,6 +13,7 @@ function build {
     FROM="$(grep -iP '^FROM' dockerfile | awk '{print $2}')"
     ee docker pull "$FROM"
     ee docker build -t "$GITHUB_REPOSITORY" \
+        --build-arg '"BUILD_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/job/$GITHUB_JOB"' \
         --build-arg "\"DIGEST=\$(docker inspect --format='{{index .RepoDigests 0}}' '$FROM' | sed 's/.*@//')\"" \
         --build-arg '"GIT_COMMIT=$GIT_COMMIT"' \
         --build-arg '"TIMESTAMP=$(date --rfc-3339 seconds)"' \
