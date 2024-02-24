@@ -18,7 +18,7 @@ function build {
         --build-arg '"TIMESTAMP=$(date --rfc-3339 seconds)"' \
         --build-arg '"URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"' \
         --build-arg '"VENDOR=$GITHUB_REPOSITORY_OWNER"' \
-        --build-arg "'VERSION=$([[ -n "$GIT_TAG" ]] && echo "$GIT_TAG" || echo "$GIT_BRANCH")'" \
+        --build-arg '"VERSION=${GIT_TAG:-$GIT_BRANCH}"' \
         --progress plain .
 }
 
