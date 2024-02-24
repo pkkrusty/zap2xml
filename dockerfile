@@ -14,7 +14,7 @@ ENV OPT_ARGS=
 # wait 12 Hours after run
 ENV SLEEPTIME=43200
 
-RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
+RUN echo '@edge https://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
     apk add --no-cache \
         ca-certificates@edge \
         perl@edge \
