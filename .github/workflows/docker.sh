@@ -12,7 +12,14 @@ export GIT_BRANCH GIT_COMMIT GIT_TAG
 function build {
     FROM="$(grep -iP '^FROM' dockerfile | awk '{print $2}')"
     ee docker pull "$FROM"
-    ee docker build -t "$GITHUB_REPOSITORY" --build-arg "\"DIGEST=\$(docker inspect --format='{{index .RepoDigests 0}}' '$FROM' | sed 's/.*@//')\"" --build-arg '"GIT_COMMIT=$GIT_COMMIT"' --build-arg '"TIMESTAMP=$(date --rfc-3339 seconds)"' --build-arg '"URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"' --build-arg '"VENDOR=$GITHUB_REPOSITORY_OWNER"' --build-arg "'VERSION=$([[ -n "$GIT_TAG" ]] && echo "$GIT_TAG" || echo "$GIT_BRANCH")'" --progress plain .
+    ee docker build -t "$GITHUB_REPOSITORY" \
+        --build-arg "\"DIGEST=\$(docker inspect --format='{{index .RepoDigests 0}}' '$FROM' | sed 's/.*@//')\"" \
+        --build-arg '"GIT_COMMIT=$GIT_COMMIT"' \
+        --build-arg '"TIMESTAMP=$(date --rfc-3339 seconds)"' \
+        --build-arg '"URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"' \
+        --build-arg '"VENDOR=$GITHUB_REPOSITORY_OWNER"' \
+        --build-arg "'VERSION=$([[ -n "$GIT_TAG" ]] && echo "$GIT_TAG" || echo "$GIT_BRANCH")'" \
+        --progress plain .
 }
 
 function push {
