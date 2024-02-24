@@ -7,8 +7,10 @@ GIT_BRANCH="$(git branch --show-current)"
 GIT_COMMIT="$(git rev-parse HEAD)"
 GIT_TAG="$(git describe --tags --exact-match 2>/dev/null || :)"
 
+export GIT_BRANCH GIT_COMMIT GIT_TAG
+
 function build {
-    ee docker build -t "$GITHUB_REPOSITORY" --progress plain .
+    ee docker build -t "$GITHUB_REPOSITORY" --build-arg '"GIT_COMMIT=$GIT_COMMIT"' --progress plain .
 }
 
 function push {
