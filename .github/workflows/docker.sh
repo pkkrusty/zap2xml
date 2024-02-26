@@ -27,14 +27,29 @@ function build {
 function push {
     ee 'printf "$GITHUB_TOKEN" | wc -c'
     if [[ "$CI" == 'true' && "$ACT" != 'true' ]]; then
+        PUSH='false'
         # Docker Hub
-        echo '##### Docker Hub #####'
-        ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
-        push_to 'docker.io'
+        if [[ -n "$DOCKERHUB_PASSWORD" ]]; then
+            echo '##### Docker Hub #####'
+            ee 'echo "$DOCKERHUB_PASSWORD" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin'
+            push_to 'docker.io'
+            PUSH='true'
+        else
+            printf '\e[1;96mNOTICE: Skipping push to Docker Hub because DOCKERHUB_PASSWORD is not set.\e[0m\n'
+        fi
         # GitHub Container Registry
-        echo '##### GitHub Container Registry #####'
-        ee 'echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_REPOSITORY_OWNER" --password-stdin'
-        push_to 'ghcr.io'
+        if [[ -n "$GITHUB_TOKEN" ]]; then
+            echo '##### GitHub Container Registry #####'
+            ee 'echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_REPOSITORY_OWNER" --password-stdin'
+            push_to 'ghcr.io'
+            PUSH='true'
+        else
+            printf '\e[1;96mNOTICE: Skipping push to GitHub Container Registry because GITHUB_TOKEN is not set.\e[0m\n'
+        fi
+        if [[ "$PUSH" != 'true' ]]; then
+            printf '\e[1;91mERROR: No containers pushed!\e[0m\n'
+            exit 1
+        fi
     else
         printf '\e[1;96mNOTICE: Skipping "docker push" because this is not a cloud CI environment.\e[0m\n'
     fi
