@@ -46,7 +46,9 @@ STDERR->autoflush(1);
 $VERSION = "2018-12-01";
 print "zap2xml ($VERSION)\n";
 print "argc: " . ($#ARGV + 2) . "\n";
-print "argv: [" . join(", ", map { "\"$_\"" } ($0, @ARGV)) . "]\n";
+if ($ENV{DEBUG} eq 'true') {
+    print "argv: [" . join(", ", map { "\"$_\"" } ($0, @ARGV)) . "]\n";
+}
 
 %options=();
 getopts("?aA:bB:c:C:d:DeE:Fgi:IjJ:l:Lm:Mn:N:o:Op:P:qRr:s:S:t:Tu:UwWxY:zZ:89",\%options);

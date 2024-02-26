@@ -62,6 +62,12 @@ docker kill "$(docker ps | tail -1 | awk '{print $1}')"
 ```
 For this reason and others, the wrapper will be removed in a subsequent version. If you plan to rely upon it, please pull your container by `git` tag.
 
+To prevent your password from ending up in a bunch of logs (or worse), `zap2xml` no longer prints the arguments it sees when it starts by default. If you need this for debugging, set:
+```bash
+export DEBUG='true'
+```
+It always prints the `argc` so you can tell if it is seeing the correct number of arguments without exposing your password.
+
 ## Development
 Contributors need these tools installed.
 - [act](https://github.com/nektos/act)
