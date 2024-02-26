@@ -16,6 +16,16 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 > >
 > > If you are browsing forks of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) wondering which fork you should use and contribute to, if any, please consider this one.
 
+> [!IMPORTANT]
+> > The `v0.1.*` releases maintain backwards-compatibility with [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml) and integrate pending upstream community contributions.
+> > - [v0.1.0](https://github.com/kj4ezj/zap2xml/releases/tag/v0.1.0) - equivalent to upstream in behavior and function.
+> > - [v0.1.1](https://github.com/kj4ezj/zap2xml/releases/tag/v0.1.1) - stops logging your password.
+> > - [v0.1.2](https://github.com/kj4ezj/zap2xml/releases/tag/v0.1.2) - adds automatic retry.
+> > - [v0.1.3](https://github.com/kj4ezj/zap2xml/releases/tag/v0.1.3) - adds exponential backoff.
+> > - [v0.1.4](https://github.com/kj4ezj/zap2xml/releases/tag/v0.1.4) - supports downloading guide data from multiple users.
+> >
+> > From `v0.2.0` onwards, backwards-compatibility with the upstream repo is not guaranteed.
+
 ### Index
 1. [Usage](#usage)
 1. [Development](#development)
