@@ -2,7 +2,7 @@ version: '3'
 
 services:
   zap2xml:
-    image: ghcr.io/kj4ezj/zap2xml:latest
+    image: ghcr.io/kj4ezj/zap2xml:v0.1.0
     restart: always
     volumes:
         - /xmltvdata:/data
