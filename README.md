@@ -1,6 +1,10 @@
 # zap2xml
 The `zap2xml` Perl script is a command-line utility that extracts electronic program guide (EPG) data for over-the-air (OTA) or cable television from any one of several service providers, parses it, collates it, and saves it in a format compatible with various media center applications. For example, you can use `zap2xml` to download guide data from [zap2it.com](https://tvlistings.zap2it.com) in [XMLTV format](https://wiki.xmltv.org/index.php/XMLTVFormat) for free for [Jellyfin](https://jellyfin.org), instead of paying $35/yr. for [Schedules Direct](https://www.schedulesdirect.org). This repo packs `zap2xml` into a lightweight docker container with its dependencies.
 
+> [!TIP]
+> **Quick Start**
+> > The fastest way to get started is to forget this repo and use [dl-guide](https://github.com/kj4ezj/dl-guide). It still uses `zap2xml` under the hood, but it provides a user-friendly interface, help, useful log output, makes sure the output file permissions are correct for your media software, and you don't have to know how to use `docker`.
+
 > [!NOTE]
 > This repo is a fork of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml).
 > > Their last commit was pushed April 2021 and the maintainer will not be able to access their GitHub account [until 2025](https://github.com/shuaiscott/zap2xml/issues/8#issuecomment-1805215717). The purpose of this fork is to:
@@ -93,6 +97,8 @@ This list is not exhaustive, there may be other compatible consumers and provide
 - Providers
     - [tvguide.com](https://www.tvguide.com/listings)
     - [zap2it.com](https://tvlistings.zap2it.com)
+- Wrappers
+    - [dl-guide](https://github.com/kj4ezj/dl-guide) - user-friendly interface wrapping this container with ancillary functionality.
 - XMLTV Project
     - [GitHub](https://github.com/XMLTV/xmltv)
     - [Homepage](https://wiki.xmltv.org/index.php/Main_Page)
