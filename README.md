@@ -64,7 +64,7 @@ For this reason and others, the wrapper will be removed in a subsequent version.
 
 To prevent your password from ending up in a bunch of logs (or worse), `zap2xml` no longer prints the arguments it sees when it starts by default. If you need this for debugging, set:
 ```bash
-export DEBUG='true'
+docker run -v "$(pwd):/data" -e 'DEBUG=true' kj4ezj/zap2xml /bin/sh -c "/zap2xml.pl -u '$ZAP2IT_USERNAME' -p '$ZAP2IT_PASSWORD' -U -o /data/tv-guide.xml"
 ```
 It always prints the `argc` so you can tell if it is seeing the correct number of arguments without exposing your password.
 
