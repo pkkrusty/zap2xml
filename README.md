@@ -1,5 +1,5 @@
 # zap2xml
-The `zap2xml` Perl script is a command-line utility that extracts electronic program guide (EPG) data for over-the-air (OTA) or cable television from any one of several service providers, parses it, collates it, and saves it in a format compatible with various media center applications. For example, you can use `zap2xml` to download guide data from [zap2it.com](https://tvlistings.zap2it.com) in [XMLTV format](https://wiki.xmltv.org/index.php/XMLTVFormat) for free for [Jellyfin](https://jellyfin.org), instead of paying $35/yr. for [Schedules Direct](https://www.schedulesdirect.org).
+The `zap2xml` Perl script is a command-line utility that extracts electronic program guide (EPG) data for over-the-air (OTA) or cable television from any one of several service providers, parses it, collates it, and saves it in a format compatible with various media center applications. For example, you can use `zap2xml` to download guide data from [zap2it.com](https://tvlistings.zap2it.com) in [XMLTV format](https://wiki.xmltv.org/index.php/XMLTVFormat) for free for [Jellyfin](https://jellyfin.org), instead of paying $35/yr. for [Schedules Direct](https://www.schedulesdirect.org). This repo packs `zap2xml` into a lightweight docker container with its dependencies.
 
 > [!NOTE]
 > This repo is a fork of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml).
