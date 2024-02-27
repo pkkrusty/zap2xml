@@ -6,7 +6,11 @@ while true; do
     /zap2xml.pl -u "$USERNAME" -p "$PASSWORD" -U -o "/data/$XMLTV_FILENAME" $OPT_ARGS
     printf 'Run time: '
     date -d "@$RUN_TIME" '+%F %T %Z'
-    MOD_TIME="$(date -r "/data/$XMLTV_FILENAME" '+%s')"
+    if [ -f "/data/$XMLTV_FILENAME" ]; then
+        MOD_TIME="$(date -r "/data/$XMLTV_FILENAME" '+%s')"
+    else
+        MOD_TIME='0'
+    fi
     if test "$MOD_TIME" -gt "$RUN_TIME"; then
         echo "Will run again in $SLEEPTIME seconds."
         unset RETRY_INTERVAL
