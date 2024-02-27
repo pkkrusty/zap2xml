@@ -1,6 +1,7 @@
 #!/bin/sh
 
 download() {
+    MOD_TIME='0'
     RETRY_INTERVAL='30'
     while true; do
         RUN_TIME="$(date '+%s')"
@@ -10,8 +11,6 @@ download() {
         date -d "@$RUN_TIME" '+%F %T %Z'
         if [ -f "$3" ]; then
             MOD_TIME="$(date -r "$3" '+%s')"
-        else
-            MOD_TIME='0'
         fi
         if test "$MOD_TIME" -lt "$RUN_TIME"; then
             echo "This run did not complete successfully, trying again in $RETRY_INTERVAL seconds..."
