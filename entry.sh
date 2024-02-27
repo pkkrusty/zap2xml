@@ -30,6 +30,5 @@ download() {
 while true; do
     download "$USERNAME" "$PASSWORD" "/data/$XMLTV_FILENAME"
     echo "Will run again in $SLEEPTIME seconds."
-    unset RETRY_INTERVAL
     sleep "$SLEEPTIME"
 done
