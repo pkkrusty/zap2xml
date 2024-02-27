@@ -29,6 +29,7 @@ download() {
 
 while true; do
     if [ -z "$USERNAME2" ] || [ "$USERNAME2" = 'none' ]; then
+        # shellcheck disable=SC2153
         download "$USERNAME" "$PASSWORD" "/data/$XMLTV_FILENAME"
     else
         mkdir -p /tmp/xmltv/raws
