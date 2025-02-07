@@ -544,7 +544,9 @@ sub printProgrammes {
                     }
                 print $FH "</sub-title>\n"
             } else {
-                print $FH "\t\t<sub-title lang=\"$lang\">" + substr($startTime, 0,8) + "</sub-title>\n";
+                print $FH "\t\t<sub-title lang=\"$lang\">";
+                print $FH substr($startTime, 0,8)
+                print $FH "</sub-title>\n";
             }
 
             print $FH "\t\t<desc lang=\"$lang\">" . &enc($programs{$p}{description}) . "</desc>\n" if defined($programs{$p}{description});
