@@ -1,25 +1,4 @@
-FROM alpine:3
-ARG BUILD_URL
-ARG DIGEST
-ARG GIT_COMMIT
-ARG TIMESTAMP
-ARG URL
-ARG VENDOR
-ARG VERSION
-
-LABEL com.github.actions.url="${BUILD_URL}"
-LABEL org.opencontainers.image.created="${TIMESTAMP}"
-LABEL org.opencontainers.image.base.digest="${DIGEST}"
-LABEL org.opencontainers.image.base.name="docker.io/library/alpine:3"
-LABEL org.opencontainers.image.description="Contains the zap2xml Perl script, a command-line utility that extracts electronic program guide (EPG) data for over-the-air (OTA) or cable television from any one of several service providers, parses it, collates it, and saves it in a format compatible with various media center applications."
-LABEL org.opencontainers.image.documentation="${URL}"
-LABEL org.opencontainers.image.licenses="GPL-3.0-or-later"
-LABEL org.opencontainers.image.revision="${GIT_COMMIT}"
-LABEL org.opencontainers.image.source="${URL}"
-LABEL org.opencontainers.image.title="zap2xml"
-LABEL org.opencontainers.image.url="${URL}"
-LABEL org.opencontainers.image.vendor="${VENDOR}"
-LABEL org.opencontainers.image.version="${VERSION}"
+FROM alpine:3.13.5
 
 ENV USERNAME=none
 ENV PASSWORD=none
@@ -28,24 +7,14 @@ ENV OPT_ARGS=
 # wait 12 Hours after run
 ENV SLEEPTIME=43200
 
-RUN echo '@edge https://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
-    apk add --no-cache \
-        ca-certificates@edge \
-        perl@edge \
-        perl-html-parser@edge \
-        perl-http-cookies@edge \
-        perl-io-socket-ssl@edge \
-        perl-json@edge \
-        perl-json-xs@edge \
-        perl-libwww@edge \
-        perl-lwp-protocol-https@edge \
-        perl-lwp-useragent-determined@edge \
-        perl-mozilla-ca@edge \
-        perl-net-http@edge \
-        perl-net-libidn@edge \
-        perl-net-ssleay@edge \
-        perl-uri@edge \
-        xmltv@edge
+RUN apk add --no-cache \
+  perl \
+  perl-http-cookies \
+  perl-lwp-useragent-determined \
+  perl-json \
+  perl-json-xs \
+  perl-lwp-protocol-https \
+  perl-gd
 
 VOLUME /data
 ADD zap2xml.pl entry.sh /
