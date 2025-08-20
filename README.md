@@ -6,8 +6,8 @@ The `zap2xml` Perl script is a command-line utility that extracts electronic pro
 > > The fastest way to get started is to forget this repo and use [dl-guide](https://github.com/kj4ezj/dl-guide). It still uses `zap2xml` under the hood, but it provides a user-friendly interface, help, useful log output, makes sure the output file permissions are correct for your media software, and you don't have to know how to use `docker`.
 
 > [!NOTE]
-> This repo is a fork of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml).
-> > Their last commit was pushed April 2021 and the maintainer will not be able to access their GitHub account [until 2025](https://github.com/shuaiscott/zap2xml/issues/8#issuecomment-1805215717). The purpose of this fork is to:
+> This repo is a fork of [huldoge/zap2xml](https://github.com/holdoge/zap2xml) which is a fork of [kj4ezj/zap2xml](https://github.com/kj4ezj/zap2xml) which is a fork of [shuaiscott/zap2xml](https://github.com/shuaiscott/zap2xml).
+> > Their last commit was pushed July 2025 and the maintainer will not be able to access their GitHub account [until 2025](https://github.com/shuaiscott/zap2xml/issues/8#issuecomment-1805215717). The purpose of this fork is to:
 > > 1. Rebuild the container to pull in security updates since April 2021.
 > > 1. Add CICD with scheduled builds to continue to pull in security updates as they come.
 > > 1. Publish the container somewhere [more reliable that Docker Hub](https://blog.alexellis.io/docker-is-deleting-open-source-images).
