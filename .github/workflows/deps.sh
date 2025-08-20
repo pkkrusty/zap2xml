@@ -3,7 +3,7 @@ set -eo pipefail
 echo "Begin - ${0##*/}"
 
 # ee
-sudo curl -fsSL 'https://raw.githubusercontent.com/kj4ezj/echo-eval/main/ee.sh' -o /usr/local/bin/ee
+sudo curl -fsSL 'https://raw.githubusercontent.com/pkkrusty/echo-eval/main/ee.sh' -o /usr/local/bin/ee
 sudo chmod +x /usr/local/bin/ee
 
 # apt
