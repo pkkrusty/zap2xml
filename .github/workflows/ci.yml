@@ -20,7 +20,7 @@ jobs:
     name: Build and Push zap2xml
     runs-on: ubuntu-latest
     permissions:
-       packages: read
+       packages: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
