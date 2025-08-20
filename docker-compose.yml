@@ -1,11 +1,11 @@
 version: '3'
 services:
   zap2xml:
-    image: ghcr.io/huldoge/zap2xml:latest
+    image: ghcr.io/pkkrusty/zap2xml:latest
     restart: always
     volumes:
         - /xmltvdata:/data
     environment:
-        - USERNAME=someone@example.com
-        - PASSWORD=hunter2
+        - USERNAME=user@gmail.com
+        - PASSWORD=password
         - XMLTV_FILENAME=tv-guide.xml
